@@ -16,6 +16,7 @@ export default function Expenses(props) {
           selected={filteredYear}
           onChangeFilter={onChangeFilterHandler}
         />
+        {props.items.map()}
         <ExpenseItem
           title={props.items[0].title}
           amount={props.items[0].amount}
