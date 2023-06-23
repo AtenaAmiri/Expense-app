@@ -1,7 +1,10 @@
+import React, { useState } from "react";
 import NewExpenseForm from "./NewExpenseForm";
-
 import "./NewExpense.css";
+
 const NewExpense = (props) => {
+  const [isEditing, setIsEditing] = useState(false);
+
   const saveExpenseHandler = (enteredExpenseData) => {
     const expenseData = {
       ...enteredExpenseData,
@@ -9,10 +12,28 @@ const NewExpense = (props) => {
     };
 
     props.onAddExpense(expenseData);
+    setIsEditing(false);
   };
+
+  const startEditingHandler = () => {
+    setIsEditing(true);
+  };
+
+  const stopEditingHandler = () => {
+    setIsEditing(false);
+  };
+
   return (
     <div className="new-expense">
-      <NewExpenseForm onSaveExpenseData={saveExpenseHandler} />
+      {!isEditing && (
+        <button onClick={startEditingHandler}>Add New Expense</button>
+      )}
+      {isEditing && (
+        <NewExpenseForm
+          onSaveExpenseData={saveExpenseHandler}
+          onCancel={stopEditingHandler}
+        />
+      )}
     </div>
   );
 };
