@@ -34,9 +34,9 @@ const Expenses = (props) => {
         onChangeFilter={filterChangeHandler}
       />
 
-      {filteredExpenses.length === 0 && (
+      {/* {filteredExpenses.length === 0 && (
         <p style={{ color: "#fff" }}>No expenses found. </p>
-      )}
+      )} */}
 
       {expensesContent}
     </Card>
